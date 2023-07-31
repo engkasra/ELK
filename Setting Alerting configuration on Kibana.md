@@ -7,3 +7,4 @@ xpack.security.encryptionKey: xxxxxxxxxxxxxxxxx
 ```
 3) paste in your `kibana.yml`</br>
 4) reset `ElasticSearch` and `Kibana`</br>
+**Done**
