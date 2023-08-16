@@ -13,4 +13,25 @@ systemctl enable elasticsearch.service
 cd /tmp
 curl --cacert /etc/elasticsearch/certs/http_ca.crt -u elastic https://localhost:9200
 ```
-### Configuring the Elasticsearch to access it publicly. ###
+[Configuring the Elasticsearch to access it publicly.](https://github.com/engkasra/ELK/blob/main/elasticsearch%20yml.txt)
+```bash
+#Installing Kibana
+sudo apt-get update && sudo apt-get install kibana
+systemctl start kibana.service
+systemctl enable kibana.service
+```
+[Configure the Kibana](https://github.com/engkasra/ELK/blob/main/kibana%20yml.txt)
+</br>
+* You can then generate an enrollment token for Kibana with the `elasticsearch-create-enrollment-token` tool.
+* Navigate to the directory where you installed Elasticsearch and run the elasticsearch-create-enrollment-token tool to generate an enrollment token.
+```bash
+cd /usr/share/elasticsearch
+bin/elasticsearch-create-enrollment-token -s kibana
+```
+* Copy the generated token and paste it into the browser and  click configure elastic button.
+* After Kibana will prompt for Verification code.
+* To generate Verification code , navigate to Kibana installation directory and execute the following script.
+```bash
+cd /usr/share/kibana
+bin/kibana-verification-code
+```
