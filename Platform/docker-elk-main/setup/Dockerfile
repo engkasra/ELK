@@ -1,0 +1,16 @@
+ARG ELASTIC_VERSION
+
+# https://www.docker.elastic.co/
+#FROM repo.asax.ir/elasticsearch/elasticsearch:${ELASTIC_VERSION}
+FROM repo.asax.ir/asa/bi/tools/elasticsearch:${ELASTIC_VERSION}
+
+USER root
+
+RUN set -eux; \
+	mkdir /state; \
+	chmod 0775 /state; \
+	chown elasticsearch:root /state
+
+USER elasticsearch:root
+
+ENTRYPOINT ["/entrypoint.sh"]
