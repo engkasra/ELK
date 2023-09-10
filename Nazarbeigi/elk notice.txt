@@ -1,0 +1,153 @@
+# ELK Setting 
+
+# Xms and Xmx 
+
+In Elasticsearch, the parameters -Xms2g and -Xmx2g are used to specify the minimum and maximum heap memory allocation for the Elasticsearch Java Virtual Machine (JVM).
+
+Here's what each parameter means:
+
+-Xms2g: This parameter sets the initial heap size for the JVM. In this case, 2g means 2 gigabytes of memory. It defines the amount of memory allocated when the Elasticsearch process starts.
+
+-Xmx2g: This parameter sets the maximum heap size for the JVM. Again, 2g indicates 2 gigabytes of memory. It defines the upper limit of memory that Elasticsearch can utilize.
+
+By setting both -Xms and -Xmx to the same value (in this case, 2g), you are specifying a fixed heap size for Elasticsearch. This can be useful when you want to limit the memory usage of Elasticsearch or if you have a specific requirement for memory allocation.
+
+However, it's worth noting that these values are just examples. The actual values you choose for -Xms and -Xmx should depend on the available system resources and the requirements of your Elasticsearch cluster. It's generally recommended to allocate an appropriate amount of memory based on your data size, query load, and other factors to ensure optimal performance.
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+# bootstrap.memory_lock
+
+The bootstrap.memory_lock setting in Elasticsearch is a configuration option that determines whether Elasticsearch's memory should be locked in physical memory (RAM) or not.
+
+When bootstrap.memory_lock is set to true, it means that Elasticsearch will attempt to lock its memory in RAM. This is often done to prevent the operating system from swapping the Elasticsearch process's memory to disk. Swapping memory to disk can result in performance degradation because disk access is significantly slower compared to RAM.
+
+By locking the memory, Elasticsearch aims to ensure that its heap memory remains in RAM at all times, providing better performance and predictable response times. However, this setting requires Elasticsearch to have sufficient privileges to lock memory, and it may not be supported on all platforms or operating systems.
+
+It's worth noting that configuring bootstrap.memory_lock requires specific operating system-level configurations and permissions. Therefore, it's recommended to consult the Elasticsearch documentation and your operating system's documentation for detailed instructions and considerations before enabling this option.
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+# xpack.security.transport.ssl
+
+The xpack.security.transport.ssl.enabled setting is a configuration option in Elasticsearch's X-Pack Security plugin. It controls whether SSL/TLS encryption is enabled for the transport layer communication in Elasticsearch cluster.
+
+When xpack.security.transport.ssl.enabled is set to true, it means that SSL/TLS encryption is enabled for the transport layer communication between nodes in the Elasticsearch cluster. This ensures that the data transmitted between nodes is encrypted and secure, protecting it from unauthorized access or interception.
+
+Enabling SSL/TLS encryption for transport communication is an important security measure, especially in production environments or when sensitive data is being transmitted across the cluster. It helps prevent potential eavesdropping or tampering with the data while it is in transit.
+
+To configure SSL/TLS encryption for transport communication, you will need to generate or obtain SSL/TLS certificates and configure the necessary settings for key and trust stores. The specific steps for configuring SSL/TLS encryption in Elasticsearch can vary depending on your environment and requirements.
+
+Please note that the X-Pack Security plugin is now included as a free feature in the default distribution of Elasticsearch starting from version 6.8.
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+# xpack.security.enabled
+
+The xpack.security.enabled setting is a configuration option in Elasticsearch's X-Pack Security plugin. It determines whether the security features provided by X-Pack Security are enabled in Elasticsearch.
+
+When xpack.security.enabled is set to true, it means that X-Pack Security is enabled and the security features it provides, such as authentication, authorization, and encryption, are active in the Elasticsearch cluster.
+
+Enabling X-Pack Security allows you to enforce access control, secure cluster communication, and authenticate users and clients accessing the Elasticsearch cluster. It provides various security features, including:
+
+Authentication: X-Pack Security allows you to configure authentication mechanisms such as usernames/passwords, Active Directory/LDAP integration, or third-party authentication providers to ensure that only authorized users can access the Elasticsearch cluster.
+
+Authorization: With X-Pack Security, you can define roles and privileges to control what actions and resources users or user groups can access within the cluster. This allows you to enforce fine-grained access control.
+
+Encryption: X-Pack Security supports Transport Layer Security (TLS) encryption, allowing you to secure the communication between Elasticsearch nodes and clients, preventing unauthorized access or tampering of data in transit.
+
+By enabling X-Pack Security, you can enhance the security of your Elasticsearch cluster and protect your data from unauthorized access. It is particularly important when handling sensitive or confidential information.
+
+Please note that starting from version 6.8, the X-Pack Security features are included as a free feature in the default distribution of Elasticsearch.
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+# xpack.graph.enabled
+
+The xpack.graph.enabled setting is a configuration option in Elasticsearch's X-Pack plugin. It determines whether the graph exploration and visualization functionality provided by X-Pack Graph is enabled in Elasticsearch.
+
+When xpack.graph.enabled is set to true, it means that the graph features of X-Pack Graph are enabled and available in Elasticsearch. X-Pack Graph is a powerful tool that allows you to explore the relationships and connections within your data stored in Elasticsearch.
+
+With X-Pack Graph, you can perform graph-based searches and visualize the connections between documents in your Elasticsearch index. It analyzes the relationships between documents based on fields and properties, providing insights into the underlying graph structure of your data.
+
+Enabling X-Pack Graph enables you to:
+
+Perform graph-based queries: You can use graph-specific queries to traverse the connections between documents and uncover patterns, relationships, and dependencies in your data.
+
+Visualize graph data: X-Pack Graph provides visualization capabilities to display the graph structure and relationships between documents in a visually appealing and intuitive way.
+
+Explore data relationships: By using X-Pack Graph, you can gain a deeper understanding of the connections between different entities in your dataset, enabling you to make more informed decisions and discover valuable insights.
+
+Please note that X-Pack Graph is a licensed feature and may not be available in the open-source version of Elasticsearch. Licensing terms and availability can vary depending on the version and Elasticsearch subscription you have.
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+# xpack.watcher.enabled
+
+The xpack.watcher.enabled setting is a configuration option in Elasticsearch's X-Pack plugin. It determines whether the Watcher functionality provided by X-Pack is enabled or disabled in Elasticsearch.
+
+When xpack.watcher.enabled is set to false, it means that the Watcher feature is disabled and not available in the Elasticsearch cluster.
+
+Watcher is a powerful feature of X-Pack that allows you to set up and manage alerting and notification actions based on specific conditions or events in Elasticsearch. It provides a way to monitor your data and automatically take actions or send notifications when certain conditions are met.
+
+By enabling Watcher, you can:
+
+Define watches: Watches are configurations that define the conditions and triggers for alerts or actions. You can specify conditions based on data queries, time-based intervals, or specific events.
+
+Execute actions: When a watch is triggered, Watcher can execute various actions such as sending notifications, invoking webhooks, indexing data, or executing custom scripts. This allows you to automate responses or take immediate actions based on specific events or conditions.
+
+Monitor and manage watches: X-Pack provides a monitoring and management interface to view and manage the configured watches, monitor the status of executed watches, and review the history of actions and notifications triggered by Watcher.
+
+By setting xpack.watcher.enabled to false, you are explicitly disabling the Watcher functionality in Elasticsearch. This can be useful if you don't require alerting and notification capabilities or if you want to save system resources by not running the Watcher service.
+
+Please note that Watcher is a licensed feature, and its availability and licensing terms may vary depending on the version and Elasticsearch subscription you have.
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+# xpack.monitoring.enabled
+
+The xpack.monitoring.enabled setting is a configuration option in Elasticsearch's X-Pack plugin. It determines whether the monitoring functionality provided by X-Pack Monitoring is enabled or disabled in Elasticsearch.
+
+When xpack.monitoring.enabled is set to true, it means that the Monitoring feature is enabled and active in the Elasticsearch cluster.
+
+X-Pack Monitoring allows you to monitor the health, performance, and usage of your Elasticsearch cluster and its components. It provides valuable insights into the operational aspects of your cluster, helping you understand its behavior and troubleshoot issues.
+
+By enabling X-Pack Monitoring, you gain the following benefits:
+
+Cluster health monitoring: X-Pack Monitoring collects and displays important metrics about the health and status of your Elasticsearch cluster, including indices, nodes, shards, and JVM performance.
+
+Resource usage monitoring: You can monitor the resource utilization of your Elasticsearch cluster, such as CPU, memory, disk space, and network usage. This information helps you understand the resource consumption patterns and optimize the cluster's performance.
+
+Alerting and notification: X-Pack Monitoring allows you to set up alerts based on predefined conditions or thresholds. When these conditions are met, notifications can be sent to alert you about potential issues or anomalies in your Elasticsearch cluster.
+
+Historical and real-time data visualization: X-Pack Monitoring provides interactive charts and visualizations to help you analyze historical and real-time data. This allows you to identify trends, patterns, and potential bottlenecks in your Elasticsearch cluster.
+
+By default, X-Pack Monitoring is available as a basic feature in the default distribution of Elasticsearch. However, more advanced monitoring capabilities are available with a subscription to a higher-level Elastic Stack license.
+
+Setting xpack.monitoring.enabled to false disables the Monitoring feature, and you will not have access to the monitoring functionality provided by X-Pack.
+
+X-Pack Monitoring does require a license for full functionality.
+
+While basic monitoring features are available in the default distribution of Elasticsearch without a license, certain advanced features and capabilities may require a subscription to a higher-level Elastic Stack license. These advanced features can include extended historical data retention, advanced alerting and notification options, and additional visualization capabilities.
+
+The specific licensing requirements and available features can vary depending on the version and subscription level of the Elastic Stack you are using. It is recommended to review the Elastic licensing documentation or consult with Elastic for detailed information about the licensing requirements and feature availability for X-Pack Monitoring in your specific scenario.
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+# ingest.geoip.downloader.enabled
+
+The ingest.geoip.downloader.enabled setting is a configuration option in Elasticsearch's Ingest GeoIP Processor plugin. It determines whether the GeoIP database downloader is enabled or disabled.
+
+When ingest.geoip.downloader.enabled is set to true, it means that the GeoIP database downloader is enabled. This allows Elasticsearch to automatically download and update the GeoIP databases used for IP geolocation.
+
+The Ingest GeoIP Processor plugin provides functionality for enriching IP addresses with geolocation information. It allows you to extract geographical details such as country, city, latitude, and longitude from IP addresses and incorporate them into your indexed documents.
+
+The GeoIP database downloader is responsible for fetching the latest version of the GeoIP databases from a specified source. By enabling this downloader, Elasticsearch can automatically download and update the GeoIP databases as new versions become available.
+
+Please note that the specific configuration and source of the GeoIP databases to be downloaded can be further defined in the Elasticsearch configuration. It's recommended to consult the Elasticsearch documentation or the specific documentation of the Ingest GeoIP Processor plugin for more details on configuring the downloader and using the GeoIP functionality in Elasticsearch.
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+
+ 
